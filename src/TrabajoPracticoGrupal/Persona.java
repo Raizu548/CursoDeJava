@@ -1,9 +1,11 @@
 package TrabajoPracticoGrupal;
 
 public abstract class Persona {
+    // Atributos
     public String nombre;
     public String apellido;
     public int legajo;
 
-    public abstract void modificarDatos();
+    // Metodos
+    public void modificarDatos() { }
 }

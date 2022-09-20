@@ -1,27 +1,19 @@
 package TrabajoPracticoGrupal;
 
 public class Profesor extends Persona {
-
+    // Atributos
     private double basico = 50000;
     private int antiguedad;
 
-
-    public Profesor(String nombre,String apellido,int legajo,int antiguedad)
-    {
+    // Constructor
+    public Profesor(String nombre,String apellido,int legajo,int antiguedad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.legajo = legajo;
         this.antiguedad =antiguedad;
     }
 
-    @Override
-    public void modificarDatos(){}
-
-    public double calcularSueldo()
-    {
-        return basico +(basico*0.10)*antiguedad;
-    }
-
+    // Getters and Setters
     public double getBasico() {
         return basico;
     }
@@ -38,6 +30,16 @@ public class Profesor extends Persona {
         this.antiguedad = antiguedad;
     }
 
+    // Metodo heredado
+    @Override
+    public void modificarDatos(){ }
+
+    // Metodos
+    public double calcularSueldo()
+    {
+        return basico +(basico*0.10)*antiguedad;
+    }
+    
     @Override
     public String toString() {
         return "Profesor{" +
