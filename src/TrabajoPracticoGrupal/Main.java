@@ -8,9 +8,12 @@ public class Main {
         Profesor profesor = new Profesor("Facundo", "Ufer", 2, 2);
         Profesor profesor2 = new Profesor("Facundo", "Matoff", 4, 2);
         Materia materia = new Materia("Laboratorio2",profesor);
+        Materia materia2 = new Materia("Programación", profesor2);
+        Carrera carrera = new Carrera("Tup");
 
         materia.agregarEstudiante(new Estudiante("Luis","Ferreyra",1));
         materia.agregarEstudiante(new Estudiante("Facu","Ferro",3));
+
 
         System.out.println(materia.verCantidad());
         System.out.println(materia.listarContenido());
@@ -19,6 +22,15 @@ public class Main {
 
         System.out.println(materia.listarContenido());
         System.out.println(materia.verCantidad());
+
+        carrera.agregarMateria(materia);
+        carrera.agregarMateria(materia2);
+        carrera.encontrarMateria("Programación");
+        System.out.println(carrera.listarContenido());
+
     }
+
+
+
 
 }

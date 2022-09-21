@@ -9,6 +9,7 @@ public class Estudiante extends Persona {
         this.legajo = legajo;
     }
 
+
     // Metodo del padre
     @Override
     public void modificarDatos(){}

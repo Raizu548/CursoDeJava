@@ -16,6 +16,33 @@ public class Materia implements Informacion {
         this.titular = profesor;
     }
 
+    // Getter and Setter.
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Profesor getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Profesor titular) {
+        this.titular = titular;
+    }
+
+    public ArrayList<Estudiante> getColeccionEstudiantes() {
+        return coleccionEstudiantes;
+    }
+
+    public void setColeccionEstudiantes(ArrayList<Estudiante> coleccionEstudiantes) {
+        this.coleccionEstudiantes = coleccionEstudiantes;
+    }
+
     // Metodos de interface
     @java.lang.Override
     public int verCantidad() {
@@ -48,4 +75,18 @@ public class Materia implements Informacion {
         }
     }
 
+
+    public boolean equals(String nombre) {
+        return this.nombre == nombre;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Materia{" +
+                "nombre='" + nombre + '\'' +
+                ", titular=" + titular +
+                ", coleccionEstudiantes=" + coleccionEstudiantes +
+                '}';
+    }
 }
