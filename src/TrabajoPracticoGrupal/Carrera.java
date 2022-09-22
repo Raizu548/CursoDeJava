@@ -34,10 +34,10 @@ public class Carrera implements Informacion {
     }
 
     //Métodos.
-
     public void agregarMateria(Materia materia){
         coleccionMaterias.add(materia);
     }
+
     public void eliminarMateria(String nombre){
 
         Iterator<Materia> materiaIterator = coleccionMaterias.iterator();

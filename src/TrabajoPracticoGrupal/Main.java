@@ -14,7 +14,7 @@ public class Main {
         materia.agregarEstudiante(new Estudiante("Luis","Ferreyra",1));
         materia.agregarEstudiante(new Estudiante("Facu","Ferro",3));
 
-
+        /*
         System.out.println(materia.verCantidad());
         System.out.println(materia.listarContenido());
         materia.eliminarEstudiante(3);
@@ -28,6 +28,12 @@ public class Main {
         carrera.encontrarMateria("Programación");
         System.out.println(carrera.listarContenido());
 
+
+         */
+
+        System.out.println(profesor.toString());
+        profesor.modificarDatos("Pedro","Ledezma",5,60000,2);
+        System.out.println(profesor.toString());
     }
 
 

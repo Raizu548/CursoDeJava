@@ -63,6 +63,7 @@ public class Materia implements Informacion {
         this.titular = profesor;
     }
 
+    // Decidimos cambiar el parametro de nombre por legajo dado que consideramos que es mejor para la buscqueda
     public void eliminarEstudiante(int legajo){
 
         Iterator<Estudiante> estudianteIterato = coleccionEstudiantes.iterator();

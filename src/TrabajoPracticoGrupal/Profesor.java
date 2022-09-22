@@ -31,8 +31,13 @@ public class Profesor extends Persona {
     }
 
     // Metodo heredado
-    @Override
-    public void modificarDatos(){ }
+    public void modificarDatos(String nombre, String apellido, int legajo,double basico, int antiguedad ) {
+        if (!nombre.equals("0")) this.nombre = nombre;
+        if (!apellido.equals("0")) this.apellido = apellido;
+        if (legajo != 0) this.legajo = legajo;
+        if (antiguedad != 0) this.antiguedad = antiguedad;
+        if (basico != 0) this.basico = basico;
+    }
 
     // Metodos
     public double calcularSueldo()

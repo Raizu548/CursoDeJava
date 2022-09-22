@@ -12,7 +12,11 @@ public class Estudiante extends Persona {
 
     // Metodo del padre
     @Override
-    public void modificarDatos(){}
+    public void modificarDatos(String nombre, String apellido, int legajo) {
+        if (!nombre.equals("0")) this.nombre = nombre;
+        if (!apellido.equals("0")) this.apellido = apellido;
+        if (legajo != 0) this.legajo = legajo;
+    }
 
     // Metodo
     @Override
