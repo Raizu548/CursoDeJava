@@ -21,9 +21,9 @@ public class Estudiante extends Persona {
     // Metodo
     @Override
     public String toString() {
-        return "Estudiante{"+"nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", legajo=" + legajo +"}\n";
+        return "Estudiante: " + nombre + " " +
+                  apellido + " " +
+                "| legajo: " + legajo +"\n";
     }
 
     public boolean equals(int legajo) {

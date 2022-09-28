@@ -48,9 +48,11 @@ public class Facultad implements Informacion {
     public void agregarCarrera(Carrera carrera){
         coleccionCarreras.add(carrera);
     }
+
     public void eliminarCarrera(String nombre){
 
         coleccionCarreras.removeIf(carrera -> carrera.getNombre().equals(nombre));
+
     }
 
     public void eliminarEstudiante(Estudiante estudianteEliminar){
@@ -62,6 +64,7 @@ public class Facultad implements Informacion {
                 materia.eliminarEstudiante(estudianteEliminar.legajo);
             }
         }
+
     }
 
     // Añadimos este metodo para poder obtener un objeto de tipo carrera. Creemos que es necesario para nuestra logica.
@@ -92,9 +95,8 @@ public class Facultad implements Informacion {
     // toString().
     @Override
     public String toString() {
-        return "Facultad{" +
-                "nombre='" + nombre + '\'' +
-                ", coleccionCarreras=" + coleccionCarreras +
-                '}';
+        return "Facultad : " +
+                 nombre + " " +
+                " | coleccionCarreras : " + coleccionCarreras;
     }
 }

@@ -1,6 +1,7 @@
 package TrabajoPracticoGrupal;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,25 +12,36 @@ public class Main {
         Facultad facultad = new Facultad("UTN");
 
         // Variables
-        int opcion, legajo, antiguedad;
+        int opcion = 0, legajo, antiguedad;
         boolean salir = false;
         String nombre,nombreCarrera,nombreProfesor,nombreMateria, apellido;
 
 
         do {
-            System.out.println(" --------------------- MENU ---------------------");
-            System.out.println("1- Agregar Carrera");
-            System.out.println("2- Eliminar Carrera");
-            System.out.println("3- Agregar Materia a una Carrera");
-            System.out.println("4- Buscar y eliminar Materia de una Carrera"); // Se busca y si existe preguntamos para eliminar
-            System.out.println("5- Agregar estudiante");
-            System.out.println("6- Elimar estudiante");
-            System.out.println("7- Expulsar estudiante de la facultad.");
-            System.out.println("8- Editar Profesor");
-            System.out.println("9- Mostrar Informacion");
-            System.out.println("10- Salir");
-            opcion = sc.nextInt();
-            sc.nextLine(); // Salto de linea
+
+            do {
+                System.out.println(" --------------------- MENU ---------------------");
+                System.out.println("1- Agregar Carrera");
+                System.out.println("2- Eliminar Carrera");
+                System.out.println("3- Agregar Materia a una Carrera");
+                System.out.println("4- Buscar y eliminar Materia de una Carrera"); // Se busca y si existe preguntamos para eliminar
+                System.out.println("5- Agregar estudiante");
+                System.out.println("6- Elimar estudiante");
+                System.out.println("7- Expulsar estudiante de la facultad.");
+                System.out.println("8- Editar Profesor");
+                System.out.println("9- Mostrar Informacion");
+                System.out.println("10- Salir");
+
+                try {
+                    opcion = sc.nextInt();
+                    salir = true;
+                } catch (InputMismatchException e){
+                    System.out.println("ERROR! SOLO NUMEROS!");
+                }
+                sc.nextLine(); // Anti bucle
+
+            } while (!salir);
+            salir = false;
 
             switch (opcion){
                 case 1:
@@ -224,7 +236,6 @@ public class Main {
             }
 
         } while (!salir);
-
 
 
     }
