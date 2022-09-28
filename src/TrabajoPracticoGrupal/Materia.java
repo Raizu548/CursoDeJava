@@ -85,9 +85,8 @@ public class Materia implements Informacion {
     @Override
     public String toString() {
         return "Materia{" +
-                "nombre='" + nombre + '\'' +
-                ", titular=" + titular +
-                ", coleccionEstudiantes=" + coleccionEstudiantes +
-                '}';
+                 nombre + " " +
+                " / titular : " + titular +
+                " / coleccionEstudiantes : " + coleccionEstudiantes;
     }
 }

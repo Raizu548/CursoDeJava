@@ -75,9 +75,8 @@ public class Carrera implements Informacion {
     // toString().
     @Override
     public String toString() {
-        return "Carrera{" +
-                "nombre='" + nombre + '\'' +
-                ", coleccionMaterias=" + coleccionMaterias +
-                '}';
+        return "Carrera : " +
+                  nombre + " "+
+                " / coleccionMaterias : " + coleccionMaterias;
     }
 }

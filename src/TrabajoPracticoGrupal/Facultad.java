@@ -39,16 +39,10 @@ public class Facultad implements Informacion {
     public void agregarCarrera(Carrera carrera){
         coleccionCarreras.add(carrera);
     }
+
     public void eliminarCarrera(Carrera nombre){
 
-        Iterator<Carrera> carreraIterator = coleccionCarreras.iterator();
-
-        while (carreraIterator.hasNext()){
-            Carrera carrera = carreraIterator.next();
-            if (carrera.equals(nombre)){
-                carreraIterator.remove();
-            }
-        }
+        coleccionCarreras.removeIf(carrera -> carrera.equals(nombre));
     }
 
     @Override
@@ -64,9 +58,8 @@ public class Facultad implements Informacion {
     // toString().
     @Override
     public String toString() {
-        return "Facultad{" +
-                "nombre='" + nombre + '\'' +
-                ", coleccionCarreras=" + coleccionCarreras +
-                '}';
+        return "Nombre de la Facultad : " +
+                 nombre + " " +
+                " / coleccionCarreras : " + coleccionCarreras;
     }
 }

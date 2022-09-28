@@ -10,11 +10,15 @@ public class Main {
         Materia materia = new Materia("Laboratorio2",profesor);
         Materia materia2 = new Materia("Programación", profesor2);
         Carrera carrera = new Carrera("Tup");
+        Carrera carrera1 = new Carrera("Isi");
+        Facultad facultad = new Facultad("UTN");
+
+
 
         materia.agregarEstudiante(new Estudiante("Luis","Ferreyra",1));
         materia.agregarEstudiante(new Estudiante("Facu","Ferro",3));
 
-        /*
+
         System.out.println(materia.verCantidad());
         System.out.println(materia.listarContenido());
         materia.eliminarEstudiante(3);
@@ -29,12 +33,22 @@ public class Main {
         System.out.println(carrera.listarContenido());
 
 
-         */
-
         System.out.println(profesor.toString());
         profesor.modificarDatos("Pedro","Ledezma",5,60000,2);
         System.out.println(profesor.toString());
+
+        facultad.agregarCarrera(carrera);
+        facultad.agregarCarrera(carrera1);
+        System.out.println(facultad.listarContenido());
+        System.out.println("------------------------------------------");
+        facultad.eliminarCarrera(carrera1);
+        System.out.println(facultad.listarContenido());
+
+
+
+
     }
+
 
 
 
