@@ -50,17 +50,27 @@ public class Carrera implements Informacion {
         }
     }
 
-    public void encontrarMateria(String nombre){
+    // Consideramos que era mejor que retorne un booleano para la logica que tenemos pensado plantear.
+    public boolean encontrarMateria(String nombre){
         for (Materia materia: coleccionMaterias)
         {
-            if (materia.equals(nombre)){
-                System.out.println("¿Desea eliminar?");
+            if (materia.getNombre().equals(nombre)){
+                return true;
             }
         }
-
-
+        return false;
     }
 
+    // Añadimos este metodo para poder obtener un objeto de tipo carrera. Creemos que es necesario para nuestra logica.
+    public Materia obtenerMateria(String nombre){
+
+        for (Materia materia: coleccionMaterias) {
+            if (materia.getNombre().equals(nombre)){
+                return materia;
+            }
+        }
+        return null;
+    }
 
     @Override
     public int verCantidad() {
@@ -69,7 +79,11 @@ public class Carrera implements Informacion {
 
     @Override
     public String listarContenido() {
-        return "Carrera: " + nombre +"\n" + coleccionMaterias;
+        String contenido = "";
+        for (Materia materia: coleccionMaterias) {
+            contenido += materia.getNombre() + "\n";
+        }
+        return contenido;
     }
 
     // toString().

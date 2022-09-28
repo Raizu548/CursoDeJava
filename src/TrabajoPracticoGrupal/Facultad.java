@@ -26,8 +26,17 @@ public class Facultad implements Informacion {
         this.nombre = nombre;
     }
 
-    public ArrayList<Carrera> getColeccionMaterias() {
+    public ArrayList<Carrera> getColeccionCarreras() {
         return coleccionCarreras;
+    }
+
+    public boolean existe(String nombre){
+        for (Carrera carrera: coleccionCarreras) {
+            if (carrera.getNombre().equals(nombre)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setColeccionMaterias(ArrayList<Carrera> coleccionCarreras) {
@@ -39,9 +48,9 @@ public class Facultad implements Informacion {
     public void agregarCarrera(Carrera carrera){
         coleccionCarreras.add(carrera);
     }
-    public void eliminarCarrera(Carrera nombre){
+    public void eliminarCarrera(String nombre){
 
-        coleccionCarreras.removeIf(carrera -> carrera.equals(nombre));
+        coleccionCarreras.removeIf(carrera -> carrera.getNombre().equals(nombre));
     }
 
     public void eliminarEstudiante(Estudiante estudianteEliminar){
@@ -55,6 +64,16 @@ public class Facultad implements Informacion {
         }
     }
 
+    // Añadimos este metodo para poder obtener un objeto de tipo carrera. Creemos que es necesario para nuestra logica.
+    public Carrera obtenerCarrera(String nombre){
+        for (Carrera carrera: coleccionCarreras) {
+            if (carrera.getNombre().equals(nombre)){
+                return carrera;
+            }
+        }
+        return null;
+    }
+
     @Override
     public int verCantidad() {
         return coleccionCarreras.size();
@@ -62,7 +81,12 @@ public class Facultad implements Informacion {
 
     @Override
     public String listarContenido() {
-        return "Facultad: " + nombre +"\n" + coleccionCarreras;
+        String contenido = "";
+        for (Carrera carrera: coleccionCarreras) {
+            contenido += carrera.getNombre() + "\n";
+        }
+
+        return contenido;
     }
 
     // toString().
