@@ -41,12 +41,16 @@ public class Facultad implements Informacion {
     }
     public void eliminarCarrera(Carrera nombre){
 
-        Iterator<Carrera> carreraIterator = coleccionCarreras.iterator();
+        coleccionCarreras.removeIf(carrera -> carrera.equals(nombre));
+    }
 
-        while (carreraIterator.hasNext()){
-            Carrera carrera = carreraIterator.next();
-            if (carrera.equals(nombre)){
-                carreraIterator.remove();
+    public void eliminarEstudiante(Estudiante estudianteEliminar){
+
+        for (Carrera carrera: coleccionCarreras) {
+
+            for (Materia materia: carrera.getColeccionMaterias()) {
+
+                materia.eliminarEstudiante(estudianteEliminar.legajo);
             }
         }
     }
