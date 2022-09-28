@@ -50,8 +50,8 @@ public class Profesor extends Persona {
         return "Profesor: " +
                   nombre + " " +
                   apellido + " " +
-                ", Nro legajo: " + legajo +
-                ",  Sueldo: " + basico +
-                ", antiguedad: " + antiguedad;
+                " | Nro legajo: " + legajo +
+                " | Sueldo: " + basico +
+                " | antiguedad: " + antiguedad +"\n";
     }
 }

@@ -43,6 +43,19 @@ public class Facultad implements Informacion {
     public void eliminarCarrera(Carrera nombre){
 
         coleccionCarreras.removeIf(carrera -> carrera.equals(nombre));
+
+    }
+
+    public void eliminarEstudiante(Estudiante estudianteEliminar){
+
+        for (Carrera carrera: coleccionCarreras) {
+
+            for (Materia materia: carrera.getColeccionMaterias()) {
+
+                materia.eliminarEstudiante(estudianteEliminar.legajo);
+            }
+        }
+
     }
 
     @Override
@@ -58,8 +71,8 @@ public class Facultad implements Informacion {
     // toString().
     @Override
     public String toString() {
-        return "Nombre de la Facultad : " +
+        return "Facultad : " +
                  nombre + " " +
-                " / coleccionCarreras : " + coleccionCarreras;
+                " | coleccionCarreras : " + coleccionCarreras;
     }
 }
