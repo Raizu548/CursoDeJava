@@ -14,6 +14,6 @@ public class Main {
         nombre = sc.nextLine();
         Facultad facultad = new Facultad(nombre);
 
-        
+
     }
 }
