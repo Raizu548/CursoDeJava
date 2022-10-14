@@ -39,10 +39,7 @@ public class Materia {
     @Override
     public String toString() {
         return "Materia{" +
-                "nombre='" + nombre + '\'' +
-                ", titular=" + titular +
-                ", listaEstudiante=" + listaEstudiante +
-                '}';
+                "nombre='" + nombre + "\n Titular: " + titular.toString() + "\nEstudiantes: " + listaEstudiante;
     }
 
 

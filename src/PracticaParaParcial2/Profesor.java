@@ -16,6 +16,7 @@ public class Profesor extends Persona {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "["+ nombre + " " + apellido + " legajo: " + legajo + "]";
+
     }
 }
