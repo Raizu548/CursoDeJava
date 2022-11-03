@@ -71,14 +71,25 @@
         </constraints>
         <properties/>
       </component>
-      <component id="996" class="javax.swing.JTable" binding="tablePaises" custom-create="true">
+      <scrollpane id="95fea">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="996" class="javax.swing.JTable" binding="tablePaises">
+            <constraints/>
+            <properties>
+              <columnSelectionAllowed value="false"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+              <rowSelectionAllowed value="true"/>
+              <surrendersFocusOnKeystroke value="false"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>

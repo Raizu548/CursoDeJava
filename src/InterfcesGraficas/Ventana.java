@@ -2,8 +2,7 @@ package InterfcesGraficas;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Ventana extends JFrame{
@@ -12,6 +11,7 @@ public class Ventana extends JFrame{
     Archivo archivo = new Archivo();
     private DefaultListModel<Pais> modeloPersona = new DefaultListModel<>();
     private DefaultTableModel modeloPais = new DefaultTableModel();
+    private String[] columna = {"Nombre", "Capital"};
 
     private JPanel panelPrincipal;
     private JLabel labelTextNombre;
@@ -33,9 +33,11 @@ public class Ventana extends JFrame{
         setContentPane(panelPrincipal);
 
         pais.addAll(archivo.lectura());
+        modeloPais.setColumnIdentifiers(columna);
         listaPersonas.setModel(modeloPersona);
+        tablePaises.setModel(modeloPais);
         mostrarLista();
-        //mostrarTabla();
+        mostrarTabla();
 
 
         botonGuardar.addActionListener(new ActionListener() {
@@ -48,7 +50,7 @@ public class Ventana extends JFrame{
 
                 // Mostrar en la lista
                 mostrarLista();
-                //mostrarTabla();
+                mostrarTabla();
             }
         });
 
@@ -56,13 +58,22 @@ public class Ventana extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println(listaPersonas.getSelectedIndex());
+                System.out.println(tablePaises.getSelectedRow());
 
+                if (tablePaises.getSelectedRow() != -1){
+                    System.out.println(pais.get(tablePaises.getSelectedRow()).toString());
+                }
+                /*
                 if (listaPersonas.getSelectedIndex() != -1){
                     pais.remove(listaPersonas.getSelectedIndex());
                     mostrarLista();
+                    mostrarTabla();
                 }
+
+                 */
             }
         });
+
     }
 
 
@@ -80,11 +91,10 @@ public class Ventana extends JFrame{
 
     public void mostrarTabla(){
 
-        int i = 0;
-        for (Pais pais: pais){
-            modeloPais.setValueAt(pais.getNombre(),i,1);
-            modeloPais.setValueAt(pais.getCapital(),i,2);
-            i++;
+        for (Pais p:pais) {
+            String[] datos = {p.getNombre(),p.getCapital()};
+            System.out.println(datos[0]+ " " + datos[1]);
+            modeloPais.addRow(datos);
         }
     }
 
