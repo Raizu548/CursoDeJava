@@ -61,7 +61,7 @@ public class Ventana extends JFrame{
                 System.out.println(tablePaises.getSelectedRow());
 
                 if (tablePaises.getSelectedRow() != -1){
-                    System.out.println(pais.get(tablePaises.getSelectedRow()).toString());
+                    String paisin = pais.get(tablePaises.getSelectedRow()).toString();
                 }
                 /*
                 if (listaPersonas.getSelectedIndex() != -1){
@@ -74,6 +74,17 @@ public class Ventana extends JFrame{
             }
         });
 
+        tablePaises.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                System.out.println(tablePaises.getSelectedRow());
+                Pais paisSelecionado = pais.get(tablePaises.getSelectedRow());
+
+                textFieldNombre.setText(paisSelecionado.getNombre());
+                textFieldCapital.setText(paisSelecionado.getCapital());
+            }
+        });
     }
 
 
