@@ -43,10 +43,18 @@ public class Ventana extends JFrame{
         botonGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String nombre = textFieldNombre.getText();
-                String capital = textFieldCapital.getText();
-                pais.add(new Pais(nombre,capital));
+
+                try {
+                    String nombre = textFieldNombre.getText();
+                    String capital = textFieldCapital.getText();
+                    evaluarCampos(textFieldNombre.getText(),textFieldCapital.getText());
+                    pais.add(new Pais(nombre,capital));
+                } catch (ExeptionCampoVacio e){
+                    JOptionPane.showMessageDialog(null,"Campos vacios!");
+                }
+
                 textFieldNombre.setText("");
+                textFieldCapital.setText("");
 
                 // Mostrar en la lista
                 mostrarLista();
@@ -106,6 +114,14 @@ public class Ventana extends JFrame{
             String[] datos = {p.getNombre(),p.getCapital()};
             System.out.println(datos[0]+ " " + datos[1]);
             modeloPais.addRow(datos);
+        }
+    }
+
+    private void evaluarCampos(String campo1, String campo2) throws ExeptionCampoVacio{
+
+        if (campo1.isEmpty() || campo2.isEmpty()){
+            ExeptionCampoVacio miExepion = new ExeptionCampoVacio("Uno de los campos esta vacio!");
+            throw miExepion;
         }
     }
 
