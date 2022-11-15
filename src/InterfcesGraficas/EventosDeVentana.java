@@ -1,5 +1,7 @@
 package InterfcesGraficas;
 
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -20,7 +22,7 @@ public class EventosDeVentana implements WindowListener {
 
     @Override
     public void windowClosed(WindowEvent windowEvent) {
-
+        System.out.println("VENTANA CERRADA");
     }
 
     @Override
@@ -35,11 +37,12 @@ public class EventosDeVentana implements WindowListener {
 
     @Override
     public void windowActivated(WindowEvent windowEvent) {
-
+        System.out.println("VENTANA ACTIVADA");
+        Ventana.actualizarTabla();
     }
 
     @Override
     public void windowDeactivated(WindowEvent windowEvent) {
-
+        System.out.println("VENTANA DESACTIVADA");
     }
 }

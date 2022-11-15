@@ -10,8 +10,10 @@ public class Ventana extends JFrame{
     static ArrayList<Pais> pais = new ArrayList<>();
     Archivo archivo = new Archivo();
     private DefaultListModel<Pais> modeloPersona = new DefaultListModel<>();
-    private DefaultTableModel modeloPais = new DefaultTableModel();
+    private static DefaultTableModel modeloPais = new DefaultTableModel();
     private String[] columna = {"Nombre", "Capital"};
+
+
 
     private JPanel panelPrincipal;
     private JLabel labelTextNombre;
@@ -23,6 +25,7 @@ public class Ventana extends JFrame{
     private JLabel labelTextCapital;
     private JTextField textFieldCapital;
     private JTable tablePaises;
+    private JButton extraButton;
 
 
     public Ventana(){
@@ -32,7 +35,13 @@ public class Ventana extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(panelPrincipal);
 
-        pais.addAll(archivo.lectura());
+        if (archivo.lectura() == null){
+            pais = new ArrayList<>();
+        } else {
+            pais.addAll(archivo.lectura());
+        }
+
+        System.out.println("Se crea la ventana principal");
         modeloPais.setColumnIdentifiers(columna);
         listaPersonas.setModel(modeloPersona);
         tablePaises.setModel(modeloPais);
@@ -50,7 +59,7 @@ public class Ventana extends JFrame{
 
                 // Mostrar en la lista
                 mostrarLista();
-                mostrarTabla();
+                actualizarTabla();
             }
         });
 
@@ -66,6 +75,7 @@ public class Ventana extends JFrame{
                 /*
                 if (listaPersonas.getSelectedIndex() != -1){
                     pais.remove(listaPersonas.getSelectedIndex());
+                    limpiarTabla();
                     mostrarLista();
                     mostrarTabla();
                 }
@@ -85,28 +95,81 @@ public class Ventana extends JFrame{
                 textFieldCapital.setText(paisSelecionado.getCapital());
             }
         });
+
+        extraButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (tablePaises.getSelectedRow() != -1){
+                    Pais paisSeleccionado = pais.get(tablePaises.getSelectedRow());
+
+                    VentanaEmergente ventanaEmergente = new VentanaEmergente(paisSeleccionado);
+                } else {
+                    JOptionPane.showMessageDialog(null,"Debe selecionar un elemento de la tabla!");
+                }
+
+
+            }
+        });
+
+
+        tablePaises.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                System.out.println("Tabla clicked");
+                //extraButton.setEnabled(true);
+            }
+        });
+
+        panelPrincipal.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                System.out.println("Panel clicked");
+                //extraButton.setEnabled(false);
+                textFieldNombre.setText("");
+                textFieldCapital.setText("");
+                tablePaises.clearSelection();
+            }
+        });
+
     }
 
 
 
     // Metodo privado
-    public void mostrarLista(){
+    private void mostrarLista(){
         System.out.println("Mostrar Lista");
         modeloPersona.removeAllElements();
         for (Pais pais : Ventana.pais) {
             modeloPersona.addElement(pais);
-            System.out.println(pais.toString());
+            //System.out.println(pais.toString());
         }
         System.out.println("----");
     }
 
-    public void mostrarTabla(){
+    public static void mostrarTabla(){
 
         for (Pais p:pais) {
             String[] datos = {p.getNombre(),p.getCapital()};
-            System.out.println(datos[0]+ " " + datos[1]);
+            //System.out.println(datos[0]+ " " + datos[1]);
             modeloPais.addRow(datos);
         }
+    }
+
+    private void limpiarTabla(){
+        for (int i = 0; i < pais.size(); i++){
+            modeloPais.removeRow(0);
+        }
+    }
+
+    public static void actualizarTabla(){
+        for (int i = 0; i < pais.size(); i++){
+            modeloPais.removeRow(0);
+        }
+
+        mostrarTabla();
     }
 
 }

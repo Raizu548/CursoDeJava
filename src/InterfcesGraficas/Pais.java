@@ -19,6 +19,14 @@ public class Pais implements Serializable {
         return capital;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
     @Override
     public String toString() {
         return nombre;
