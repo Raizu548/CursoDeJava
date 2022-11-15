@@ -38,7 +38,7 @@ public class EventosDeVentana implements WindowListener {
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         System.out.println("VENTANA ACTIVADA");
-        Ventana.actualizarTabla();
+        //Ventana.mostrarTabla();
     }
 
     @Override
