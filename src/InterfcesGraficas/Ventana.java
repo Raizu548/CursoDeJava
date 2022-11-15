@@ -16,16 +16,13 @@ public class Ventana extends JFrame{
 
 
     private JPanel panelPrincipal;
-    private JLabel labelTextNombre;
-    private JTextField textFieldNombre;
     private JButton botonGuardar;
     private JTextArea textArea;
     private JList listaPersonas;
     private JButton botonEliminar;
-    private JLabel labelTextCapital;
-    private JTextField textFieldCapital;
     private JTable tablePaises;
     private JButton extraButton;
+    private JLabel label1;
 
 
     public Ventana(){
@@ -52,14 +49,9 @@ public class Ventana extends JFrame{
         botonGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String nombre = textFieldNombre.getText();
-                String capital = textFieldCapital.getText();
-                pais.add(new Pais(nombre,capital));
-                textFieldNombre.setText("");
 
-                // Mostrar en la lista
-                mostrarLista();
-                actualizarTabla();
+                VentanaAgregarPais nuevaVentana = new VentanaAgregarPais();
+
             }
         });
 
@@ -72,15 +64,16 @@ public class Ventana extends JFrame{
                 if (tablePaises.getSelectedRow() != -1){
                     String paisin = pais.get(tablePaises.getSelectedRow()).toString();
                 }
-                /*
-                if (listaPersonas.getSelectedIndex() != -1){
-                    pais.remove(listaPersonas.getSelectedIndex());
+
+                if (tablePaises.getSelectedRow() != -1){
+                    pais.remove(tablePaises.getSelectedRow());
                     limpiarTabla();
                     mostrarLista();
                     mostrarTabla();
+                    System.out.println("Borrado");
                 }
 
-                 */
+
             }
         });
 
@@ -91,8 +84,8 @@ public class Ventana extends JFrame{
                 System.out.println(tablePaises.getSelectedRow());
                 Pais paisSelecionado = pais.get(tablePaises.getSelectedRow());
 
-                textFieldNombre.setText(paisSelecionado.getNombre());
-                textFieldCapital.setText(paisSelecionado.getCapital());
+                //textFieldNombre.setText(paisSelecionado.getNombre());
+                //textFieldCapital.setText(paisSelecionado.getCapital());
             }
         });
 
@@ -128,8 +121,6 @@ public class Ventana extends JFrame{
                 super.mouseClicked(e);
                 System.out.println("Panel clicked");
                 //extraButton.setEnabled(false);
-                textFieldNombre.setText("");
-                textFieldCapital.setText("");
                 tablePaises.clearSelection();
             }
         });
@@ -138,7 +129,7 @@ public class Ventana extends JFrame{
 
 
 
-    // Metodo privado
+    // Metodos
     private void mostrarLista(){
         System.out.println("Mostrar Lista");
         modeloPersona.removeAllElements();
@@ -158,7 +149,7 @@ public class Ventana extends JFrame{
         }
     }
 
-    private void limpiarTabla(){
+    public static void limpiarTabla(){
         for (int i = 0; i < pais.size(); i++){
             modeloPais.removeRow(0);
         }
